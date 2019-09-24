@@ -10,7 +10,7 @@
 </div>
 <% end %>
 
-<%= form_for @fundraiser do |f| %>
+<%= form_for @fundraiser, :html => {:id => "fundraiser-form"} do |f| %>
     <%= f.label :school_year %>
     <%= f.collection_select :school_year, school_year, :to_str, :to_str, {}, {class: "form-control", :required => true}  %></br>
     <%= f.label :title %>
@@ -32,6 +32,6 @@
     <%= f.label :notice %>
     <%= f.text_area :notice, class: "form-control" %></br>
     
-<%= f.submit class: "btn btn-outline-light", id: "fundraiser_submit" %>
+<%= f.submit class: "btn btn-outline-light" %>
 <% end %>
 

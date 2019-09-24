@@ -7,8 +7,13 @@
     });
 
 function attachListeners() {
-    $('form').submit(function(e){
-            e.preventDefault();
-            alert("Stopped submit")
-    });
+    $('#fundraiser-form').submit(function(e){
+        e.preventDefault();
+        let url = '/fundraisers'
+        let data = $(this).serialize();
+        let posting = $.post(url, data);
+        posting.done(function(d) {
+            console.log(d)
+        });      
+  });
 }
