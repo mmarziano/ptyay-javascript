@@ -29,7 +29,10 @@ class FundraisersController < ApplicationController
         @fundraiser = Fundraiser.new(fundraiser_params)
         @fundraiser.school = current_user.school
         if @fundraiser.save
-            redirect_to user_path(current_user)
+            respond_to do |format|
+                format.html {redirect_to user_path(current_user)}
+                format.json {render json: @fundraiser}
+            end 
         else 
             @fundraiser.errors.full_messages.inspect
             render :new
