@@ -1,4 +1,4 @@
-<%= form_for @student, :method => 'post' do |f| %>
+<%= form_for Student.new, :method => 'post', :html => {:id => "student-form"}  do |f| %>
         <%= f.hidden_field :household_id, :value => current_user.household.id %>
         <%= f.label :first_name %>
         <%= f.text_field :first_name, class: "form-control", required: true %></br>

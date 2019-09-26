@@ -39,13 +39,14 @@
                         </tr>
                             <% @user.household.students.each do |student| %>
                             <tr>
-                                <td><%= student.full_name %></td>
-                                <td><%= student.grade %></td>
+                                <td id="student-name"><%= student.full_name %></td>
+                                <td id="student-id"><%= student.grade %></td>
                                 <td><%= student.participation_points_by_student %></td>
                             </tr>
                             <% end %>
                     </table>
-                        <%= link_to 'Add Student', new_household_student_path(@user.household), :class => "btn btn-primary", :style => "float: left" %>
+                        <%= link_to 'Add Student', new_household_student_path(@user.household), :class => "btn btn-primary", :style => "float: left", :id => "add_student"%>
+                        <div id="new-student-form"><%= render partial: "students/form" %></div>
                 </div>
              </div>
     </div>

@@ -10,7 +10,7 @@ class StudentsController < ApplicationController
 
     def create
         @user = current_user
-        if @student = Student.find_by(student_params) 
+        if @student = Student.find_by(first_name: params[:first_name], last_name: params[:last_name], grade: params[:grade]) 
             flash[:message] = "Student already exists."
             redirect_to user_path(current_user)
         else
@@ -20,7 +20,7 @@ class StudentsController < ApplicationController
             @classroom = Classroom.school_classrooms(@student.school).detect {|c| c.name == params[:student][:grade]}
             @student.classroom = @classroom
                 if @student.save 
-                    render "users/show"
+                    render json: @student
                 else 
                     @student.errors.full_messages.inspect
                     render :new
