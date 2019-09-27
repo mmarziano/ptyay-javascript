@@ -37,7 +37,13 @@ function attachListeners() {
         e.preventDefault();
         $('#student-form').hide();
         $('#add_student').show();
-    })
+    });
+    $('#new-fundraiser-btn').on('click', function(e){
+        e.preventDefault();
+        $('#new-fundraiser-btn').hide();
+        $('#fundraiser-form').show();
+        newFundraiser();
+    });
 }
 
  function newStudentButton() {
@@ -68,6 +74,30 @@ function addStudent() {
         $('#student-form').hide();
         $('#add_student').show();
     });
+}
+
+function newFundraiser() {
+    $('#fundraiser-form').submit(function(e){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        var post_url = '/fundraisers'; 
+        var request_method = 'POST'; 
+        var form_data = $(this).serialize(); 
+
+        Rails.ajax({
+            url : post_url,
+            type: request_method,
+            data : form_data, 
+            success: function(newFundraiser) {
+                console.log(newFundraiser);
+            },
+            error: function() {
+                alert('Unable to create fundraiser.')
+            }
+        });
+       
+    });
+
 }
 
 function populateDash() {

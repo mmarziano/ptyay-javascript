@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get '/fundraisers/most_comments' => "fundraisers#most_comments"
   post '/students', to: "students#create"
   get '/student_list', to: "students#student_list"
+  post '/fundraisers', to: "fundraisers#create"
 
   
   resources :users

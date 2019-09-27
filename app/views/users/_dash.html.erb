@@ -54,7 +54,7 @@
         </div>
     </div>                     
     <div class="col-md-12 col-sm-12">
-            <div class="frame-full text-center">
+            <div class="frame-full">
                 <div class="table-responsive">                
                     <table id="fundraiser-table" class="table table-striped">
                         <tr>
@@ -96,7 +96,8 @@
                         <% end %>
                     </table>
                     <% if @user.admin? %>
-                         <%= link_to 'Add Fundraiser', new_fundraiser_path, :class => "btn btn-primary", :style => "float: left" %>
+                         <%= link_to 'Add Fundraiser', new_fundraiser_path, :class => "btn btn-primary", :style => "float: left", id: "new-fundraiser-btn" %>
+                         <div id="new-fundraiser-form"><%= render partial: "fundraisers/form" %></div>
                     <% end %>
                 </div>
              </div>
