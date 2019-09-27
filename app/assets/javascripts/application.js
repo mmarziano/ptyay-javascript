@@ -59,7 +59,7 @@ function addStudent() {
             type: request_method,
             data : form_data, 
             success: function(newStudent) {
-                $('#student-list').append('<tr><td>' + newStudent.first_name + '</td><td>' + newStudent.grade + '</td></tr>');
+                $('#student-list').append('<tr><td>' + newStudent.first_name + ' ' + newStudent.last_name + '</td><td>' + newStudent.grade + '</td></tr>');
             },
             error: function() {
                 alert('Error saving student')
@@ -73,7 +73,7 @@ function addStudent() {
 function populateDash() {
     $.get( "/student_list", function( data ) {
         for (var i = 0; i < data.length; i++) {
-            $('#student-list').append('<tr><td>' + data[i].first_name + '</td><td>' + data[i].grade + '</td></tr>');
+            $('#student-list').append('<tr><td>' + data[i].first_name + ' ' + data[i].last_name + '</td><td>' + data[i].grade + '</td></tr>');
         }
       });
 }
