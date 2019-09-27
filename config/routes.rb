@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   post '/households/:household_id/students/new' => "students#create"
   get '/fundraisers/exceeded_expectations' => "fundraisers#ee"
   get '/fundraisers/most_comments' => "fundraisers#most_comments"
+  post '/students', to: "students#create"
+  get '/student_list', to: "students#student_list"
 
   
   resources :users

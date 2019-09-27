@@ -30,20 +30,13 @@
         <div class="frame text-center">
             <%= link_to "View Household Info", household_path(current_user.household), :class => "btn btn-success btn-sm", style: "float: right" %></br>
             </br>
-                <div class="table-responsive">
-                    <table class="table table-striped">
+                <div class="table-responsive" id="students-on-dash">
+                    <table class="table table-striped" id="student-list">
                         <tr>
                             <th><h3>Student Name</h3></th>
                             <th><h3>Grade</h3></th>
-                            <th><h3>Points</h3></th>
                         </tr>
-                            <% @user.household.students.each do |student| %>
-                            <tr>
-                                <td id="student-name"><%= student.full_name %></td>
-                                <td id="student-id"><%= student.grade %></td>
-                                <td><%= student.participation_points_by_student %></td>
-                            </tr>
-                            <% end %>
+                            
                     </table>
                         <%= link_to 'Add Student', new_household_student_path(@user.household), :class => "btn btn-primary", :style => "float: left", :id => "add_student"%>
                         <div id="new-student-form"><%= render partial: "students/form" %></div>

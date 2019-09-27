@@ -3,6 +3,12 @@ class StudentsController < ApplicationController
 
     before_action :my_student?, only: [:edit, :update, :show, :destroy]
     
+    def student_list
+        household = current_user.household
+        @students = Student.select{|h| h.household_id == household.id}
+        render json: @students
+    end 
+    
     def new
         @student = Student.new
         @household = current_user.household
