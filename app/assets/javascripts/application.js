@@ -33,7 +33,12 @@ function attachListeners() {
         e.preventDefault();
         newStudentButton();
     });
-    $('#close').on('click', function(e){
+    $('#close-fundraiser').on('click', function(e){
+        e.preventDefault();
+        $('#fundraiser-form').hide();
+        $('#new-fundraiser-btn').show();
+    });
+    $('#close-student').on('click', function(e){
         e.preventDefault();
         $('#student-form').hide();
         $('#add_student').show();
