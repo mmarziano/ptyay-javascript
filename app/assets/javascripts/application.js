@@ -33,11 +33,16 @@ function attachListeners() {
         e.preventDefault();
         newStudentButton();
     });
+    $('#close').on('click', function(e){
+        e.preventDefault();
+        $('#student-form').hide();
+        $('#add_student').show();
+    })
 }
 
  function newStudentButton() {
         $('#add_student').hide();
-        $('#student-form').css("visibility", "visible");
+        $('#student-form').show();
         addStudent();
 }
 
@@ -60,7 +65,7 @@ function addStudent() {
                 alert('Error saving student')
             }
         });
-        $('#student-form').css("visibility", "hidden");
+        $('#student-form').hide();
         $('#add_student').show();
     });
 }

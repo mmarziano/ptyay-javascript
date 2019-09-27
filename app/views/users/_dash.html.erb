@@ -35,8 +35,8 @@
                         <tr>
                             <th><h3>Student Name</h3></th>
                             <th><h3>Grade</h3></th>
+                            <th></th>
                         </tr>
-                            
                     </table>
                         <%= link_to 'Add Student', new_household_student_path(@user.household), :class => "btn btn-primary", :style => "float: left", :id => "add_student"%>
                         <div id="new-student-form"><%= render partial: "students/form" %></div>

@@ -7,4 +7,5 @@
         <%= f.label :grade %>
         <%= f.collection_select :grade, grades, :to_str, :to_str, {}, {class: "form-control", :required => true}  %></br>
     <%= f.submit "Save", class: "btn btn-outline-light", id: "save"%>
+    <a href="#" id="close">Close</a>
 <% end %>

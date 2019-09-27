@@ -14,9 +14,6 @@ h1, h2, h3, h4, h5, h6 {font-family: 'Fjalla One', 'Helvetica', sans-serif;}
     width: 100%;
     height: auto;
 }
-#new-student-form {
-    visibility: hidden;
-}
 
 .full-panel {
     position: relative;
@@ -492,4 +489,6 @@ h1, h2, h3, h4, h5, h6 {font-family: 'Fjalla One', 'Helvetica', sans-serif;}
       display: block;
   }
 
-  
+  #student-form {
+      display: none;
+  }
