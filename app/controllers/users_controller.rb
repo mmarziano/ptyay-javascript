@@ -43,6 +43,11 @@ class UsersController < ApplicationController
                 end  
      end 
 
+    def get_user 
+      @user = User.find(current_user.id)
+      render json: @user  
+    end 
+
     def show 
         @user = User.find(params[:id])
         @fundraiser = Fundraiser.new

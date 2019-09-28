@@ -11,6 +11,9 @@
 <% end %>
 
 <%= form_for @fundraiser, :html => {:id => "fundraiser-form"} do |f| %>
+    <% if current_user.admin? %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+    <% end%>
     <%= f.label :school_year %>
     <%= f.collection_select :school_year, school_year, :to_str, :to_str, {}, {class: "form-control", :required => true}  %></br>
     <%= f.label :title %>

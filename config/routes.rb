@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   post '/students', to: "students#create"
   get '/student_list', to: "students#student_list"
   post '/fundraisers', to: "fundraisers#create"
+  get '/get_user', to: "users#get_user"
 
   
   resources :users

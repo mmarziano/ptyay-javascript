@@ -51,7 +51,21 @@ function attachListeners() {
     });
 }
 
- function newStudentButton() {
+function getUser() {
+    Rails.ajax({
+        url : '/get_user',
+        type: 'GET',
+        data : $(this).serialize(),
+        success: function(user) {
+            console.log(user)
+        },
+        error: function() {
+            alert('Error retrieving user')
+        }
+    });
+}
+
+function newStudentButton() {
         $('#add_student').hide();
         $('#student-form').show();
         addStudent();
@@ -88,12 +102,15 @@ function newFundraiser() {
         var post_url = '/fundraisers'; 
         var request_method = 'POST'; 
         var form_data = $(this).serialize(); 
-
+        var user = getUser();
+        
         Rails.ajax({
             url : post_url,
             type: request_method,
             data : form_data, 
             success: function(newFundraiser) {
+                var status = newFundraiser.status;
+                var title = newFundraiser.title;
                 console.log(newFundraiser);
             },
             error: function() {
@@ -112,3 +129,13 @@ function populateDash() {
         }
       });
 }
+
+
+
+//<td>Completed!</td>
+//* <td><%= link_to fundraiser.title, fundraiser_path(fundraiser) %></td>
+// <td><%= fundraiser.format_date %></td> 
+// <td>$<%= fundraiser.fundraiser_info("price") %></td> 
+// <td><%= fundraiser.fundraiser_info("location") %></td> 
+//<% if @user.admin? %>
+ //   <td><%= link_to raw("&#9998;"), edit_fundraiser_path(fundraiser), style: "color: white; margin-right: 5px" %><%= link_to raw("&#10008;"), fundraiser_path(fundraiser), method: :delete %></<% end %>
