@@ -119,13 +119,21 @@ function newFundraiser() {
             success: function(newFundraiser) {
                 var status = newFundraiser.status;
                 var title = newFundraiser.title;
-                console.log(newFundraiser);
+                var price = newFundraiser.price;
+                var location = newFundraiser.location;
+                var date = newFundraiser.date;
+                if (status !== 'Completed') {
+                    $('#fundraiser-table').append('<tr><td>View Details/RSVP!</td><td>' + title + '</td><td>' + date + '</td><td>' + '$'+ price + '</td><td>' + location + '</td></tr>');
+                } else {
+                    $('#fundraiser-table').append('<tr><td>Completed!</td><td>' + title + '</td><td>' + date + '</td><td>' + '$'+ price + '</td><td>' + location + '</td></tr>');
+                };
             },
             error: function() {
                 alert('Unable to create fundraiser.')
             }
         });
-       console.log(currentUser);
+        $('#new-fundraiser-btn').show();
+        $('#fundraiser-form').hide();
     });
 
 }
