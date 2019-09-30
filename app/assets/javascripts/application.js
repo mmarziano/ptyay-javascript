@@ -24,6 +24,7 @@
 //   });
 
 $( document ).ready(function() {
+    var user;
     attachListeners();
     populateDash();
 });
@@ -51,18 +52,26 @@ function attachListeners() {
     });
 }
 
+
 function getUser() {
+    let user = {};
     Rails.ajax({
         url : '/get_user',
         type: 'GET',
         data : $(this).serialize(),
-        success: function(user) {
-            console.log(user)
-        },
+        success: function(data) {
+            user.firstName = data.first_name;
+            user.lastName = data.last_name;
+            user.email = data.email;
+            user.admin = data.admin;
+            user.schoolId = data.school_id;
+            user.householdId = data.household_id;
+    },
         error: function() {
             alert('Error retrieving user')
         }
     });
+    return user;
 }
 
 function newStudentButton() {
@@ -96,14 +105,13 @@ function addStudent() {
 }
 
 function newFundraiser() {
+    let currentUser = getUser()
     $('#fundraiser-form').submit(function(e){
         e.preventDefault();
         e.stopImmediatePropagation();
         var post_url = '/fundraisers'; 
         var request_method = 'POST'; 
         var form_data = $(this).serialize(); 
-        var user = getUser();
-        
         Rails.ajax({
             url : post_url,
             type: request_method,
@@ -117,7 +125,7 @@ function newFundraiser() {
                 alert('Unable to create fundraiser.')
             }
         });
-       
+       console.log(currentUser);
     });
 
 }
