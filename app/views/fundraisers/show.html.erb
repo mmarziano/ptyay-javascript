@@ -36,13 +36,15 @@
             <h1>Comments</h1>
             <div class="line"></div>
             
-            <% @fundraiser.comments.reverse.each do |c| %>
-                <% if c.user == current_user %>
-                    <p><%=link_to c.text, edit_fundraiser_comment_path(@fundraiser, c) %> - <%= c.show_comment_info%>   <%= link_to "Delete", fundraiser_comment_path(@fundraiser, c), method: :delete %></td></p>
-                <% else %>
-                    <p><%=c.text %> - <%= c.show_comment_info%></p>
+            <div id="comments-section">
+                <% @fundraiser.comments.reverse.each do |c| %>
+                    <% if c.user == current_user %>
+                        <p><%=link_to c.text, edit_fundraiser_comment_path(@fundraiser, c) %> - <%= c.show_comment_info%>   <%= link_to "Delete", fundraiser_comment_path(@fundraiser, c), method: :delete %></td></p>
+                    <% else %>
+                        <p><%=c.text %> - <%= c.show_comment_info%></p>
+                    <% end %>
                 <% end %>
-            <% end %>
+            </div>
             
             <div class="line"></div>
             

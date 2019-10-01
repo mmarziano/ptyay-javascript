@@ -1,5 +1,5 @@
 
-<%= form_tag fundraiser_comments_path(fundraiser) do %>
+<%= form_tag fundraiser_comments_path(fundraiser), :id => 'comment-form' do %>
     <%=text_field_tag :comment, '', size: 100%>
     <%=submit_tag "Post Comment"%>
 <% end %>

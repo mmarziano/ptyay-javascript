@@ -1,0 +1,19 @@
+# <tr>
+#       <td>View Details/RSVP!</td>
+#     <td><%= link_to fundraiser.title, fundraiser_path(fundraiser) %></td>
+#     <td><%= fundraiser.format_date %></td>
+#     <td>$<%= fundraiser.fundraiser_info("price") %></td>
+#     <td><%= fundraiser.fundraiser_info("location") %></td>
+#     <% if @user.admin? %>
+#         <td><%= link_to raw("&#9998;"), edit_fundraiser_path(fundraiser), style: "color: white; margin-right: 5px" %><%= link_to raw("&#10008;"), fundraiser_path(fundraiser), method: :delete %></td>
+#     <% end %>
+# </tr>
+
+    <td>Sample</td>
+    <td>ABC123</td>
+    <td>Huh?</td>
+    <td>Please work</td>
+    <% if @user.admin? %>
+        <td>Yikes</td>
+    <% end %>
+</tr>

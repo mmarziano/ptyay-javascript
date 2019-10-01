@@ -104,39 +104,60 @@ function addStudent() {
     });
 }
 
-function newFundraiser() {
-    let currentUser = getUser()
-    $('#fundraiser-form').submit(function(e){
+function addComment() {
+    $('#comment-form').submit(function(e){
         e.preventDefault();
         e.stopImmediatePropagation();
-        var post_url = '/fundraisers'; 
+        var post_url = '/fundraisers/:fundraiser_id/comments'; 
         var request_method = 'POST'; 
         var form_data = $(this).serialize(); 
+
         Rails.ajax({
             url : post_url,
             type: request_method,
             data : form_data, 
-            success: function(newFundraiser) {
-                var status = newFundraiser.status;
-                var title = newFundraiser.title;
-                var price = newFundraiser.price;
-                var location = newFundraiser.location;
-                var date = newFundraiser.date;
-                if (status !== 'Completed') {
-                    $('#fundraiser-table').append('<tr><td>View Details/RSVP!</td><td>' + title + '</td><td>' + date + '</td><td>' + '$'+ price + '</td><td>' + location + '</td></tr>');
-                } else {
-                    $('#fundraiser-table').append('<tr><td>Completed!</td><td>' + title + '</td><td>' + date + '</td><td>' + '$'+ price + '</td><td>' + location + '</td></tr>');
-                };
+            success: function(newComment) {
+                console.log(newComment)
+                //$('#comments').append('<tr><td>' + newStudent.first_name + ' ' + newStudent.last_name + '</td><td>' + newStudent.grade + '</td></tr>');
             },
             error: function() {
-                alert('Unable to create fundraiser.')
+                alert('Error posting comment')
             }
         });
-        $('#new-fundraiser-btn').show();
-        $('#fundraiser-form').hide();
     });
-
 }
+
+// function newFundraiser() {
+//     let currentUser = getUser()
+//     $('#fundraiser-form').submit(function(e){
+//         e.preventDefault();
+//         e.stopImmediatePropagation();
+//         var post_url = '/fundraisers'; 
+//         var request_method = 'POST'; 
+//         var form_data = $(this).serialize(); 
+//         Rails.ajax({
+//             url : post_url,
+//             type: request_method,
+//             data : form_data, 
+//             success: function(newFundraiser) {
+//                 var status = newFundraiser.completed;
+//                 var title = newFundraiser.title;
+//                 var price = newFundraiser.price;
+//                 var location = newFundraiser.location;
+//                 var date = newFundraiser.date;
+//                 if (status === false) {
+//                     $('#fundraiser-table').append;
+//                 };
+//             },
+//             error: function() {
+//                 alert('Unable to create fundraiser.')
+//             }
+//         });
+//         $('#new-fundraiser-btn').show();
+//         $('#fundraiser-form').hide();
+//     });
+
+// }
 
 function populateDash() {
     $.get( "/student_list", function( data ) {
